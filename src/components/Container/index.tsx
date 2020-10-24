@@ -1,8 +1,10 @@
 import React from 'react';
-import { ContainerStyle } from './styles';
+import { ContainerStyle, ScrollStyle } from './styles';
 
 const Container: React.FC = ({ children }) => (
-  <ContainerStyle>{children}</ContainerStyle>
+  <ContainerStyle>
+    <ScrollStyle>{children}</ScrollStyle>
+  </ContainerStyle>
 );
 
 export default Container;
