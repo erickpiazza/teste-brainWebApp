@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+import Container from '../../components/Container';
 
 const App: React.FC = () => (
-  <View style={{ flex: 1, backgroundColor: '#0082C9' }}>
+  <Container>
     <Text> Config</Text>
-  </View>
+  </Container>
 );
 
 export default App;

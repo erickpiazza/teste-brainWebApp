@@ -7,14 +7,14 @@ import Routers from './routes/index';
 import store from './store/store';
 
 const App: React.FC = () => (
-  <Provider store={store}>
-    <NavigationContainer>
-      <StatusBar barStyle="light-content" backgroundColor="#001C47" />
-      <View style={{ flex: 1, backgroundColor: '#0082C9' }}>
+  <NavigationContainer>
+    <StatusBar barStyle="light-content" backgroundColor="#001C47" />
+    <Provider store={store}>
+      <View style={{ flex: 1 }}>
         <Routers />
       </View>
-    </NavigationContainer>
-  </Provider>
+    </Provider>
+  </NavigationContainer>
 );
 
 export default App;

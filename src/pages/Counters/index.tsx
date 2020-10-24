@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
+import Container from '../../components/Container';
 import { TestAction } from '../../store/counters/actions';
 
 const Counters: React.FC = () => {
@@ -11,9 +12,9 @@ const Counters: React.FC = () => {
   });
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#0082C9' }}>
+    <Container>
       <Text> Counters</Text>
-    </View>
+    </Container>
   );
 };
 
