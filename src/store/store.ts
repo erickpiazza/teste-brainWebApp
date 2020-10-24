@@ -7,5 +7,5 @@ export interface ApplicationState {
   counterState: CounterState;
 }
 
-const store: Store<ApplicationState> = createStore(rootReducer, composeWithDevTools());
+const store = createStore(rootReducer, composeWithDevTools());
 export default store;
