@@ -1,19 +1,20 @@
 import { Reducer } from 'redux';
-import { CounterActionTypes, CounterState, TEST } from './types';
+import { CounterActionTypes, CounterState, SET_SELECTED_COUNTER, TEST } from './types';
 
 const INITIAL_STATE: CounterState = {
-  counters: [],
+  counters: [
+    { id: 1, value: 0 },
+    { id: 2, value: 2 },
+  ],
+  selectedCounter: 1,
 };
 
-const counterReducer: Reducer<CounterState> = (
-  state = INITIAL_STATE,
-  action: CounterActionTypes,
-) => {
+const counterReducer: Reducer<CounterState> = (state = INITIAL_STATE, action: CounterActionTypes) => {
   switch (action.type) {
     case TEST:
-      console.log('teste reducer funcionou');
       return { ...state };
-
+    case SET_SELECTED_COUNTER:
+      return { ...state, selectedCounter: action.payload.id };
     default:
       return state;
   }
