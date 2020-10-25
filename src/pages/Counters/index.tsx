@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import BoxCounter from '../../components/BoxCounter';
 import Container from '../../components/Container';
-import { setSelectedAction, testAction } from '../../store/counters/actions';
+import { setSelectedAction } from '../../store/counter/actions';
 import { RootState } from '../../store/rootReducer';
-import { ContainerCounters, TitleCounters, ValueCounters } from './styles';
 
 const Counters: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,12 +14,14 @@ const Counters: React.FC = () => {
   return (
     <Container>
       <Text> Counters</Text>
-
-      {counters.map(counter => (
-        <ContainerCounters onPress={() => dispatch(setSelectedAction(counter.id))} key={counter.id} isSeleted={counter.id === selectedCounter}>
-          <TitleCounters>Counter {counter.id}</TitleCounters>
-          <ValueCounters> 0001</ValueCounters>
-        </ContainerCounters>
+      {counters?.map(counter => (
+        <BoxCounter
+          isSeleted={counter.id === selectedCounter}
+          counterId={counter.id}
+          counterValue={counter.value}
+          key={counter.id}
+          onPress={() => dispatch(setSelectedAction(counter.id))}
+        />
       ))}
     </Container>
   );
