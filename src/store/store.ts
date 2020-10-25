@@ -1,6 +1,6 @@
-import { createStore, Store } from 'redux';
+import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { CounterState } from './counters/types';
+import { CounterState } from './counter/types';
 import { rootReducer } from './rootReducer';
 
 export interface ApplicationState {

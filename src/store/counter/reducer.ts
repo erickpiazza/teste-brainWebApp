@@ -1,10 +1,14 @@
+import { Value } from 'react-native-reanimated';
 import { Reducer } from 'redux';
 import {
   ADD_COUNTER,
   Counter,
   CounterActionTypes,
   CounterState,
+  DECREMENT_COUNTER,
   DETELE_COUNTER,
+  INCREMENT_COUNTER,
+  RESET_COUNTER,
   SET_SELECTED_COUNTER,
 } from './types';
 
@@ -47,6 +51,37 @@ const counterReducer: Reducer<CounterState> = (
       }
 
       return { ...state, counters: newArrayCounter, selectedCounter: newCounterSelected };
+    }
+    case INCREMENT_COUNTER: {
+      const newArrayCounter = state.counters.map(counter => {
+        if (counter.id !== action.payload.id) {
+          return counter;
+        }
+        return { ...counter, value: counter.value + 1 };
+      });
+
+      return { ...state, counters: newArrayCounter };
+    }
+    case DECREMENT_COUNTER: {
+      const newArrayCounter = state.counters.map(counter => {
+        if (counter.id !== action.payload.id) {
+          return counter;
+        }
+        return { ...counter, value: counter.value > 0 ? counter.value - 1 : counter.value };
+      });
+
+      return { ...state, counters: newArrayCounter };
+    }
+
+    case RESET_COUNTER: {
+      const newArrayCounter = state.counters.map(counter => {
+        if (counter.id !== action.payload.id) {
+          return counter;
+        }
+        return { ...counter, value: 0 };
+      });
+
+      return { ...state, counters: newArrayCounter };
     }
 
     default:

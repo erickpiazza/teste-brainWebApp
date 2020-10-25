@@ -1,7 +1,12 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.TouchableOpacity`
-  width: 45%;
+interface ButtonProps {
+  width?: number;
+  fontSize?: number;
+}
+
+export const Container = styled.TouchableOpacity<ButtonProps>`
+  width: ${props => (props.width ? props.width : 45)}%;
   height: 60px;
   background: #fff;
   border-radius: 10px;
@@ -12,9 +17,9 @@ export const Container = styled.TouchableOpacity`
   align-items: center;
 `;
 
-export const ButtonText = styled.Text`
+export const ButtonText = styled.Text<ButtonProps>`
   color: #1f4b80;
-  font-size: 18px;
+  font-size: ${props => (props.fontSize ? props.fontSize : 18)}px;
   text-align: center;
   font-weight: bold;
 `;

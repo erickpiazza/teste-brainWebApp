@@ -5,11 +5,13 @@ import { Container, ButtonText } from './styles';
 
 interface ButtonProps extends TouchableOpacityProps {
   children: string;
+  width?: number;
+  fontSize?: number;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, ...rest }) => (
-  <Container {...rest}>
-    <ButtonText>{children} </ButtonText>
+const Button: React.FC<ButtonProps> = ({ children, width, fontSize, ...rest }) => (
+  <Container width={width} {...rest}>
+    <ButtonText fontSize={fontSize}>{children} </ButtonText>
   </Container>
 );
 

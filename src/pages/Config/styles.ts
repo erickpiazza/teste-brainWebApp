@@ -7,13 +7,13 @@ export const BoxButton = styled.View`
   justify-content: space-between;
 `;
 
-export const ContainerButton = styled.View`
+export const Box = styled.View`
   width: 100%;
   margin-top: 12px;
   margin-top: 32px;
 `;
 
-export const ContainerButtonTitle = styled.Text`
+export const Title = styled.Text`
   font-size: 24px;
   font-weight: bold;
 `;
