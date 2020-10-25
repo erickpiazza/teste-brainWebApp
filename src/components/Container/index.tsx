@@ -1,8 +1,18 @@
 import React from 'react';
-import { ContainerStyle, ScrollStyle } from './styles';
+import { ContainerStyle, ContainerTitle, ScrollStyle, Title } from './styles';
 
-const Container: React.FC = ({ children }) => (
+interface ContainerProps {
+  title?: string;
+}
+
+const Container: React.FC<ContainerProps> = ({ children, title }) => (
   <ContainerStyle>
+    {title && (
+      <ContainerTitle>
+        <Title>{title}</Title>
+      </ContainerTitle>
+    )}
+
     <ScrollStyle>{children}</ScrollStyle>
   </ContainerStyle>
 );

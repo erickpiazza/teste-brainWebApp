@@ -12,8 +12,7 @@ const Counters: React.FC = () => {
   const selectedCounter = useSelector((state: RootState) => state.counter.selectedCounter);
 
   return (
-    <Container>
-      <Text> Counters</Text>
+    <Container title="Counters">
       {counters?.map(counter => (
         <BoxCounter
           isSeleted={counter.id === selectedCounter}

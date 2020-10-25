@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Text } from 'react-native';
+import { Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import BoxCounter from '../../components/BoxCounter';
 import Button from '../../components/Button';
@@ -46,9 +46,7 @@ const Config: React.FC = () => {
   };
 
   return (
-    <Container>
-      <Text> Config</Text>
-
+    <Container title="Config">
       <Box>
         <Title> Counters</Title>
         <BoxButton>
