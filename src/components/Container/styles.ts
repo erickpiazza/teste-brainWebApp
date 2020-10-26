@@ -4,15 +4,9 @@ export const ContainerStyle = styled.SafeAreaView`
   flex: 1;
 `;
 
-export const ScrollStyle = styled.ScrollView`
-  flex: 1;
-  background-color: #0082c9;
-  padding: 0 30px;
-`;
-
 export const ContainerTitle = styled.View`
   width: 100%;
-  padding: 4px 16px;
+  padding: 4px 12px;
   background: #001c47;
 `;
 
@@ -21,4 +15,9 @@ export const Title = styled.Text`
   font-size: 24px;
   font-weight: bold;
   text-align: left;
+`;
+export const ContainerContent = styled.View`
+  flex: 1;
+  padding: 4px 12px;
+  background: #0082c9;
 `;

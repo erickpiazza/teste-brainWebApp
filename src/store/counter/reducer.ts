@@ -1,4 +1,3 @@
-import { Value } from 'react-native-reanimated';
 import { Reducer } from 'redux';
 import {
   ADD_COUNTER,
@@ -44,7 +43,7 @@ const counterReducer: Reducer<CounterState> = (
     case DETELE_COUNTER: {
       let newCounterSelected: number | undefined;
 
-      const newArrayCounter = state.counters.filter((item, index) => item.id !== action.payload.id);
+      const newArrayCounter = state.counters.filter(item => item.id !== action.payload.id);
 
       if (newArrayCounter.length > 0) {
         newCounterSelected = newArrayCounter[0].id;

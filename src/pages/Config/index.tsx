@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import BoxCounter from '../../components/BoxCounter';
 import Button from '../../components/Button';
@@ -12,7 +12,14 @@ import {
   resetCounterAction,
 } from '../../store/counter/actions';
 import { RootState } from '../../store/rootReducer';
-import { BoxButton, Box, Title } from './styles';
+import {
+  BoxButton,
+  Box,
+  Title,
+  ContainerBox,
+  BoxNotExistCounterSelected,
+  TextNotExistCounterSelected,
+} from './styles';
 
 const Config: React.FC = () => {
   const dispatch = useDispatch();
@@ -45,41 +52,74 @@ const Config: React.FC = () => {
     }
   };
 
+  const counterExist = () => {
+    if (!selectedCounter) {
+      return (
+        <BoxNotExistCounterSelected>
+          <TextNotExistCounterSelected>
+            Não existe contador seleciona no momento
+          </TextNotExistCounterSelected>
+        </BoxNotExistCounterSelected>
+      );
+    }
+    return counters
+      .filter(item => item.id === selectedCounter)
+      .map(counter => (
+        <BoxCounter
+          disabled
+          isSeleted={counter.id === selectedCounter}
+          counterId={counter.id}
+          counterValue={counter.value}
+          key={counter.id}
+        />
+      ));
+  };
+
   return (
     <Container title="Config">
-      <Box>
-        <Title> Counters</Title>
-        <BoxButton>
-          <Button onPress={() => dispatch(addCounterAction())}>{`Add ${'\n'}Counter`}</Button>
-          <Button onPress={RemoveCounter}>{`Remove ${'\n'} Counter`}</Button>
-        </BoxButton>
-      </Box>
+      <ContainerBox>
+        <Box>
+          <Title> Counters</Title>
+          <BoxButton>
+            <Button onPress={() => dispatch(addCounterAction())}>{`Add ${'\n'}Counter`}</Button>
+            <Button onPress={RemoveCounter}>{`Remove ${'\n'} Counter`}</Button>
+          </BoxButton>
+        </Box>
 
-      <Box>
-        <Title> Selected Counter</Title>
-        {counters
-          .filter(item => item.id === selectedCounter)
-          .map(counter => (
-            <BoxCounter
-              disabled
-              isSeleted={counter.id === selectedCounter}
-              counterId={counter.id}
-              counterValue={counter.value}
-              key={counter.id}
-            />
-          ))}
-        <BoxButton>
-          <Button fontSize={14} width={30} onPress={handleIncrement}>
-            Adicionar
-          </Button>
-          <Button fontSize={14} width={30} onPress={handleReset}>
-            Zerar
-          </Button>
-          <Button fontSize={14} width={30} onPress={handleDecrement}>
-            Diminuir
-          </Button>
-        </BoxButton>
-      </Box>
+        <Box>
+          <Title> Selected Counter</Title>
+          {counterExist()}
+          <BoxButton>
+            <Button
+              icon="plus"
+              fontSize={14}
+              width={30}
+              onPress={handleIncrement}
+              disabled={!selectedCounter}
+            >
+              Adicionar
+            </Button>
+            <Button
+              icon="x-circle"
+              fontSize={14}
+              width={30}
+              onPress={handleReset}
+              disabled={!selectedCounter}
+            >
+              Zerar
+            </Button>
+            <Button
+              icon="minus"
+              fontSize={14}
+              width={30}
+              onPress={handleDecrement}
+              disabled={!selectedCounter}
+            >
+              Diminuir
+            </Button>
+          </BoxButton>
+        </Box>
+      </ContainerBox>
     </Container>
   );
 };
