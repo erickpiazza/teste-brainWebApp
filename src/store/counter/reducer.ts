@@ -23,33 +23,20 @@ const counterReducer: Reducer<CounterState> = (
     case SET_SELECTED_COUNTER:
       return { ...state, selectedCounter: action.payload.id };
     case ADD_COUNTER: {
-      let isSelectedCounter: number | undefined;
       const newArrayCounter: Counter = {
         id: state.counters.length > 0 ? state.counters[state.counters.length - 1].id + 1 : 1,
         value: 0,
       };
-      if (!state.selectedCounter) {
-        isSelectedCounter = newArrayCounter.id;
-      } else {
-        isSelectedCounter = state.selectedCounter;
-      }
 
       return {
         ...state,
         counters: [...state.counters, newArrayCounter],
-        selectedCounter: isSelectedCounter,
       };
     }
     case DETELE_COUNTER: {
-      let newCounterSelected: number | undefined;
-
       const newArrayCounter = state.counters.filter(item => item.id !== action.payload.id);
 
-      if (newArrayCounter.length > 0) {
-        newCounterSelected = newArrayCounter[0].id;
-      }
-
-      return { ...state, counters: newArrayCounter, selectedCounter: newCounterSelected };
+      return { ...state, counters: newArrayCounter, selectedCounter: undefined };
     }
     case INCREMENT_COUNTER: {
       const newArrayCounter = state.counters.map(counter => {
