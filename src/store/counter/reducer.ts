@@ -27,7 +27,6 @@ const counterReducer: Reducer<CounterState> = (
         id: state.counters.length > 0 ? state.counters[state.counters.length - 1].id + 1 : 1,
         value: 0,
       };
-
       return {
         ...state,
         counters: [...state.counters, newArrayCounter],

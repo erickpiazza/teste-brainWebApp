@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import BoxCounter from '../../components/BoxCounter';
 import Button from '../../components/Button';
