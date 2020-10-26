@@ -30,7 +30,7 @@ const Config: React.FC = () => {
     if (selectedCounter) {
       dispatch(deleteCounterAction(selectedCounter));
     } else {
-      Alert.alert('Selecione um Contador');
+      Alert.alert('Não existe contador selecionado');
     }
   };
 
