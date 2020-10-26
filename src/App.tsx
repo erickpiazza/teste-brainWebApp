@@ -10,7 +10,6 @@ const App: React.FC = () => (
   <Provider store={store}>
     <NavigationContainer>
       <StatusBar barStyle="light-content" backgroundColor="#001C47" />
-
       <View style={{ flex: 1 }}>
         <Routers />
       </View>
