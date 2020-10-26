@@ -34,3 +34,9 @@ export const ValueCounters = styled.Text`
   font-size: 34px;
   font-weight: bold;
 `;
+
+export const TextAlert = styled.Text`
+  font-size: 24px;
+  text-align: center;
+  color: #ff9500;
+`;
